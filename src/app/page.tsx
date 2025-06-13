@@ -1,95 +1,63 @@
+import Albums from "@/components/albums";
+import { HomeHero } from "@/components/home-hero";
+import { HomeNavbar } from "@/components/home-navbar";
+import {
+  Box,
+  Card,
+  Container,
+  Flex,
+  Image as ChakraImage,
+  Heading,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { Viewport } from "next";
 import Image from "next/image";
-import styles from "./page.module.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+  themeColor: "black",
+};
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <Box
+      minH="100vh"
+      pt="env(safe-area-inset-top)"
+      pb="env(safe-area-inset-bottom)"
+      pl="env(safe-area-inset-left)"
+      pr="env(safe-area-inset-right)"
+    >
+      <HomeHero />
+      <HomeNavbar />
+      <VStack minH="vh" align="start" px={2} py={14}>
+        <Container maxW="960px">
+          <Box mb={8}>
+            <Heading sm={{ display: "none" }} size="5xl">
+              Saibhinn
+            </Heading>
+            <Text
+              lineHeight="tall"
+              fontSize="lg"
+              sm={{ fontSize: "xl" }}
+              pt={2}
+            >
+              Mexican-Irish artist building a cult following in Dublin, known
+              for goosebump-inducing vocals, raw storytelling, and electric live
+              shows.
+            </Text>
+          </Box>
+          <Albums />
+        </Container>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <Box sm={{ display: "none" }} mt={10} width="100%">
+          <Image alt="Saibh" width={500} height={500} src="/saibh_green.jpg" />
+        </Box>
+      </VStack>
+    </Box>
   );
 }
